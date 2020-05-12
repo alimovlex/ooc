@@ -9,5 +9,5 @@ add_executable(01
         main.c
         new.h
         Object.h
-        Set.c
+        Bag.c
         Set.h)

@@ -13,4 +13,3 @@ add_executable(04
         new.h
         Point.c
         Point.h)
-        #points.c

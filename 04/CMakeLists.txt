@@ -8,7 +8,7 @@ include_directories(.)
 add_executable(04
         Circle.c
         Circle.h
-        circles.c
+        main.c
         new.c
         new.h
         Point.c

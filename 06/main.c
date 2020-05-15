@@ -1,5 +1,4 @@
 #include "Object.h"
-
 static int Any_differ (const void * _self, const void * b)
 {
 	return 0;	/* Any equals anything... */

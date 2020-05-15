@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "parse.h"			/* defines NUMBER */
+#include "main.h"            /* defines NUMBER */
 #include "value.h"
 #include "mathlib.h"
 #include "Var.h"

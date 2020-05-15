@@ -1,5 +1,5 @@
-#ifndef	PARSE_H
-#define	PARSE_H
+#ifndef	MAIN_H
+#define	MAIN_H
 
 /*
  *	symbols

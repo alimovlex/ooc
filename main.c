@@ -10,7 +10,6 @@
 
 int main(int argc, char **argv)
 {
-    //multithreaded_sandbox();
     test_encapsulation();
     test_inheritance();
     test_polymorphism();

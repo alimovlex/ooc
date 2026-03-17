@@ -8,74 +8,9 @@
     Copyright (c) 2020 alimovlex. All rights reserved.
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include <errno.h>
-#include <math.h>
-#include <time.h>
-#include <pthread.h>
-#include <unistd.h>
-#include <threads.h>
 #include "log.h"
 #include "rect.h"
 #include "circle.h"
-
-//WORK ON THREADS IS IN PROGRESS
-static volatile int COUNTER = 10;  // Static value shared between threads
-
-void* run(void *arg)
-{
-    int n = *(int*)arg;  // Thread number for humans to differentiate
-
-    //free(arg);
-
-    int x = COUNTER;  // Automatic local variable--each thread has its own
-
-    // We just assigned x from foo, so they'd better be equal here.
-    // (In all my test runs, they were, but even this isn't guaranteed!)
-
-    log_info("Thread %d: x = %d, COUNTER = %d", n, x, COUNTER);
-
-    // And they should be equal here, but they're not always!
-    // (Sometimes they were, sometimes they weren't!)
-
-    // What happens is another thread gets in and increments foo
-    // right now, but this thread's x remains what it was before!
-
-    COUNTER++;  // Increment shared value
-
-    return NULL;
-}
-
-int multithreaded_sandbox()
-{
-    const int THREAD_COUNT = 8;
-    thrd_t t[THREAD_COUNT];
-
-    for (int i = 0; i < THREAD_COUNT; i++) {
-        int *n = malloc(sizeof *n);  // Holds a thread serial number
-        *n = i;
-        thrd_create(t + i, (thrd_start_t) run, n);
-        free(n);
-    }
-
-    for (int i = 0; i < THREAD_COUNT; i++) {
-        thrd_join(t[i], NULL);
-    }
-    log_debug("COUNTER = %d", COUNTER);
-
-    pthread_t t0, t1;
-    int *n = malloc(sizeof *n);
-    *n=1;
-    pthread_create(&t0,NULL,run,n);
-    pthread_create(&t1,NULL,run,n);
-    pthread_join(t0, NULL);
-    pthread_join(t1, NULL);
-    free(n);
-    return 0;
-}
 
 int test_encapsulation()
 {
